@@ -1,0 +1,5 @@
+alias ls='ls -F --color=auto' 
+alias ll='ls -alrth --color=auto'
+alias grep='grep --color=auto' 
+alias vi='vim'
+alias sudo='command sudo '

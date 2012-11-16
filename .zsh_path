@@ -1,0 +1,6 @@
+typeset -U path
+
+which -s brew>/dev/null && path=( $(brew --prefix coreutils)/libexec/gnubin $path)
+
+path=( ~/bin ~/ghar/bin/ $path)
+manpath=( $manpath)

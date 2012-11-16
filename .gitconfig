@@ -1,0 +1,21 @@
+[core]
+	editor = vim
+[user]
+	email = awole20@gmail.com
+	name = Jeff Wong
+[diff]
+        tool = p4diff
+[merge]
+        keepBackup = false;
+        tool = p4merge
+[mergetool "p4merge"]
+        cmd = p4merge-merge.sh \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+        trustExitCode = false
+[difftool "p4diff"]
+        cmd = p4merge-diff.sh \"$LOCAL\" \"$REMOTE\" \"$BASE\" || p4merge \"$LOCAL\" \"$REMOTE\"
+[alias]
+        lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+        lost = !"gitk --all $(git log -g --pretty=format:%h)"
+
+[push]
+	default = tracking
