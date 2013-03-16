@@ -18,4 +18,5 @@
         lost = !"gitk --all $(git log -g --pretty=format:%h)"
 
 [push]
-	default = simple
+    #default = simple #is not supported until later, use tracking for now
+	default = tracking
