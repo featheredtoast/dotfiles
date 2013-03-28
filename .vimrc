@@ -67,7 +67,6 @@ set incsearch		" Incremental search
 set autowrite		" Automatically save before commands like :next and :make
 set hidden             " Hide buffers when they are abandoned
 set mouse=a		" Enable mouse usage (all modes)
-set number
 
 " For regular expressions turn magic on
 set magic
@@ -173,6 +172,11 @@ if has("mac") || has("macunix")
   vmap <D-j> <M-j>
   vmap <D-k> <M-k>
 endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Folds
+" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set foldmethod=indent
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vimgrep searching and cope displaying
