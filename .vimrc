@@ -32,6 +32,22 @@ Bundle 'scrooloose/syntastic'
 let g:syntastic_auto_loc_list=1
 " }}}
 
+" Let ^A/^X work on date/timestamps
+Bundle 'tpope/vim-speeddating'
+
+" Markdown syntax files
+Bundle 'tpope/vim-markdown'
+
+" Enable repeating various other tpope (surround, speeddating, abolish,
+" unimpaired) with .
+Bundle 'tpope/vim-repeat'
+
+" Tabular!
+Bundle 'godlygeek/tabular'
+
+
+
+
 "Folds {{{{
 set foldmethod=marker
 set foldlevel=99 "folds open by default
