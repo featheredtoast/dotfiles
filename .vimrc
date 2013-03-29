@@ -25,7 +25,7 @@ let g:mapleader = ","
     nmap <F8> :TagbarToggle<CR>
 
 "Folds
-    set foldmethod=indent
+    set foldmethod=syntax
     set foldlevel=99 "folds open by default
 
 "Autocomplete ctrl-space
