@@ -14,6 +14,9 @@ let g:mapleader = ","
     Bundle 'majutsushi/tagbar'
     nmap <F8> :TagbarToggle<CR>
 
+"Folds
+    set foldmethod=indent
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -137,9 +140,6 @@ vnoremap <silent> # :call VisualSelection('b')<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Treat long lines as break lines (useful when moving around in them)
-map j gj
-map k gk
 
 " Smart way to move between windows
 map <C-j> <C-W>j
@@ -185,10 +185,6 @@ if has("mac") || has("macunix")
   vmap <D-k> <M-k>
 endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Folds
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set foldmethod=indent
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
