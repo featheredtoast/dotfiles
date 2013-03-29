@@ -10,6 +10,16 @@ let g:mapleader = ","
     call vundle#rc()
     Bundle 'gmarik/vundle'
 
+" Color schemes
+    if has('gui_running')
+      Bundle 'jnurmine/Zenburn'
+      colorscheme zenburn
+    else
+      Bundle 'tpope/vim-vividchalk'
+      set background="dark"
+      colorscheme vividchalk
+    endif
+
 "Tagbar
     Bundle 'majutsushi/tagbar'
     nmap <F8> :TagbarToggle<CR>
