@@ -3,6 +3,18 @@
 let mapleader = ","
 let g:mapleader = ","
 
+"Vundle
+    set nocompatible
+    filetype off
+    set runtimepath+=~/.vim/bundle/vundle/
+    call vundle#rc()
+    Bundle 'gmarik/vundle' 
+
+"Tagbar
+    Bundle 'majutsushi/tagbar'
+    nmap <F8> :TagbarToggle<CR>
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -175,8 +187,9 @@ endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Folds
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set foldmethod=indent
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vimgrep searching and cope displaying
