@@ -8,7 +8,7 @@ let g:mapleader = ","
     filetype off
     set runtimepath+=~/.vim/bundle/vundle/
     call vundle#rc()
-    Bundle 'gmarik/vundle' 
+    Bundle 'gmarik/vundle'
 
 "Tagbar
     Bundle 'majutsushi/tagbar'
@@ -16,7 +16,26 @@ let g:mapleader = ","
 
 "Folds
     set foldmethod=indent
+    set foldlevel=99 "folds open by default
 
+"Autocomplete ctrl-space
+    if has("gui_running")
+        " C-Space seems to work under gVim on both Linux and win32
+        inoremap <C-Space> <C-n>
+    else " no gui
+        if has("unix")
+            inoremap <Nul> <C-n>
+        else
+        " I have no idea of the name of Ctrl-Space elsewhere
+        endif
+    endif
+
+" Autocmd
+    augroup vimrcExtra
+        au!
+        " Strip trailing whitespace before saving
+        autocmd BufWritePre * :%s/\s\+$//e
+    augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
