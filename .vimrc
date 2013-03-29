@@ -78,10 +78,6 @@ if has("syntax")
   syntax on
 endif
 
-" If using a dark background within the editing area and syntax highlighting
-" turn on this option as well
-set background=dark
-
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
