@@ -38,6 +38,12 @@ Bundle 'tpope/vim-speeddating'
 " Markdown syntax files
 Bundle 'tpope/vim-markdown'
 
+" re/un/wrap manipulation
+Bundle 'tpope/vim-surround'
+
+" Extend bracket mappings
+Bundle 'tpope/vim-unimpaired'
+
 " Enable repeating various other tpope (surround, speeddating, abolish,
 " unimpaired) with .
 Bundle 'tpope/vim-repeat'
