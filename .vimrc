@@ -51,7 +51,8 @@ Bundle 'tpope/vim-repeat'
 " Tabular!
 Bundle 'godlygeek/tabular'
 
-
+" Indexed Search!
+Bundle 'vim-scripts/IndexedSearch'
 
 
 "Folds {{{{
