@@ -54,6 +54,9 @@ Bundle 'godlygeek/tabular'
 " Indexed Search!
 Bundle 'vim-scripts/IndexedSearch'
 
+" Git commands!
+Bundle 'tpope/vim-fugitive'
+
 
 "Folds {{{{
 set foldmethod=marker
