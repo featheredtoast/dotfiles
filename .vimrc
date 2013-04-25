@@ -218,8 +218,10 @@ map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 
+" Save my pinkie from death by too much shifting
 map <leader>bn :bn<cr>
 map <leader>bp :bp<cr>
+map <leader>bd :bd<cr>
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
