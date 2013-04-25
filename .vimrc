@@ -80,12 +80,19 @@ else " no gui
 endif
 " }}}
 
-" Autocmd {{{
-augroup vimrcExtra
-    au!
-    " Strip trailing whitespace before saving
-    autocmd BufWritePre * :%s/\s\+$//e
-augroup END
+" Strip trailing whitespace with <leader>x {{{
+nnoremap <leader>$ :call <SID>StripTrailingWhitespaces()<CR>
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
 " }}}
 
 " Paste {{{
