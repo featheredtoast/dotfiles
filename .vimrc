@@ -58,13 +58,16 @@ Bundle 'vim-scripts/IndexedSearch'
 " Git commands!
 Bundle 'tpope/vim-fugitive'
 
+" MiniBufExplorer
+Bundle 'fholgado/minibufexpl.vim'
 
-"Folds {{{{
+
+"Folds {{{
 set foldmethod=marker
 set foldlevel=99 "folds open by default
-" }}}}
+" }}}
 
-"Autocomplete ctrl-space {{{{
+"Autocomplete ctrl-space {{{
 if has("gui_running")
     " C-Space seems to work under gVim on both Linux and win32
     inoremap <C-Space> <C-n>
@@ -75,23 +78,33 @@ else " no gui
     " I have no idea of the name of Ctrl-Space elsewhere
     endif
 endif
-" }}}}
+" }}}
 
-" Autocmd {{{{
+" Autocmd {{{
 augroup vimrcExtra
     au!
     " Strip trailing whitespace before saving
     autocmd BufWritePre * :%s/\s\+$//e
 augroup END
-" }}}}
+" }}}
 
-" Paste {{{{
+" Paste {{{
 set pastetoggle=<F2>
-" }}}}
+" }}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => VIM user interface
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Invisibles {{{
+" Shortcut to rapidly toggle `set list`
+nmap <leader>l :set list!<CR>
+
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬
+
+"Invisible character colors
+highlight NonText guifg=#4a4a59
+highlight SpecialKey guifg=#4a4a59
+" }}}
+
+" VIM user interface {{{
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
@@ -136,6 +149,8 @@ endif
 " according to the detected filetype.
 if has("autocmd")
   filetype plugin indent on
+
+  autocmd FileType java setlocal ts=4 sts=4 sw=4 noexpandtab
 endif
 
 " The following are commented out as they cause vim to behave a lot
@@ -161,23 +176,9 @@ set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
+" }}}
 
-" Source a global configuration file if available
-if filereadable("/etc/vim/vimrc.local")
-  source /etc/vim/vimrc.local
-endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Files, backups and undo
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Turn backup off, since most stuff is in SVN, git et.c anyway...
-set nobackup
-set nowb
-set noswapfile
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text, tab and indent related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Text, tab and indent related {{{
 " Use spaces instead of tabs
 set expandtab
 
@@ -187,6 +188,7 @@ set smarttab
 " 1 tab == 4 spaces
 set shiftwidth=4
 set tabstop=4
+set softtabstop=4
 
 " Linebreak on 500 characters
 set lbr
@@ -195,18 +197,16 @@ set tw=500
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
+" }}}
 
-""""""""""""""""""""""""""""""
-" => Visual mode related
-""""""""""""""""""""""""""""""
+" Visual mode related {{{
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
+" }}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Moving around, tabs, windows and buffers
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Moving around, tabs, windows and buffers {{{
 
 " Smart way to move between windows
 map <C-j> <C-W>j
@@ -226,19 +226,17 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
+" }}}
 
-""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""
+" Status line {{{
 " Always show the status line
 set laststatus=2
 
 " Format the status line
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+" }}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing mappings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Editing mappings {{{
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
@@ -251,18 +249,14 @@ if has("mac") || has("macunix")
   vmap <D-j> <M-j>
   vmap <D-k> <M-k>
 endif
+" }}}
 
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vimgrep searching and cope displaying
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vimgrep searching and cope displaying {{{
 " When you press gv you vimgrep after the selected text
 vnoremap <silent> gv :call VisualSelection('gv')<CR>
+" }}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Helper functions
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Helper functions {{{
 function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
@@ -319,3 +313,4 @@ function! <SID>BufcloseCloseIt()
      execute("bdelete! ".l:currentBufNum)
    endif
 endfunction
+" }}}
