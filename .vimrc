@@ -156,8 +156,6 @@ endif
 " according to the detected filetype.
 if has("autocmd")
   filetype plugin indent on
-
-  autocmd FileType java setlocal ts=4 sts=4 sw=4 noexpandtab
 endif
 
 " The following are commented out as they cause vim to behave a lot
@@ -219,6 +217,9 @@ map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
+
+map <leader>bn :bn<cr>
+map <leader>bp :bp<cr>
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
