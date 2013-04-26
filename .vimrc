@@ -22,10 +22,18 @@ else
 endif
 "}}}
 
+" Nerdtree {{{
+    Bundle 'scrooloose/nerdtree'
+    let NERDTreeShowHidden=1
+" }}}
+
 "Tagbar {{{
 Bundle 'majutsushi/tagbar'
 nmap <F8> :TagbarToggle<CR>
 "}}}
+
+" f7 to open file explorer for nerdtree
+nmap <F7> :NERDTreeToggle<CR>
 
 " Syntastic! {{{
 Bundle 'scrooloose/syntastic'
@@ -69,7 +77,10 @@ let g:miniBufExplMapCTabSwitchBufs = 1 "ctrl-tab, ctrl-shit-tab, this only works
 " Save my pinkie from death by too much shifting
 map <leader>n :bn<cr>
 map <leader>p :bp<cr>
-map <leader>d :bd<cr>
+
+" bclose - keeps windows when closing buffers
+Bundle 'bcaccinolo/bclose'
+map <leader>d :Bclose<cr> close buffer
 
 map <leader>tn :tabnew<cr>
 map <leader>tc :tabclose<cr>
