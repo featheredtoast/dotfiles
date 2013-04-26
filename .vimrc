@@ -58,12 +58,29 @@ Bundle 'vim-scripts/IndexedSearch'
 " Git commands!
 Bundle 'tpope/vim-fugitive'
 
-" MiniBufExplorer
+" MiniBufExplorer and buffer settings{{{
 Bundle 'fholgado/minibufexpl.vim'
+"let g:miniBufExplVSplit = 20 "try out vertical split
+let g:miniBufExplorerMoreThanOne=1 "always on
+let g:miniBufExplUseSingleClick = 1 "single click to swap
+let g:miniBufExplMapWindowNavVim = 1 "ctrl-hjkl movement between windows
+let g:miniBufExplMapCTabSwitchBufs = 1 "ctrl-tab, ctrl-shit-tab, this unfortunately isn't working so well...
+
+" Save my pinkie from death by too much shifting
+map <leader>n :bn<cr>
+map <leader>p :bp<cr>
+map <leader>d :bd<cr>
+
+" Opens a new tab with the current buffer's path
+" Super useful when editing files in the same directory
+"map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+
+" Switch CWD to the directory of the open buffer
+map <leader>cd :cd %:p:h<cr>:pwd<cr>
+" }}}
 
 " Visual Star Search
 Bundle 'nelstrom/vim-visual-star-search'
-
 
 "Folds {{{
 set foldmethod=marker
@@ -204,32 +221,6 @@ set si "Smart indent
 set wrap "Wrap lines
 " }}}
 
-" Moving around, tabs, windows and buffers {{{
-
-" Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
-" Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-
-" Save my pinkie from death by too much shifting
-map <leader>bn :bn<cr>
-map <leader>bp :bp<cr>
-map <leader>bd :bd<cr>
-
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-
-" Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
-" }}}
 
 " Status line {{{
 " Always show the status line
