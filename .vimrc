@@ -86,7 +86,8 @@ map <leader>p :bp<cr>
 
 " bclose - keeps windows when closing buffers
 Bundle 'bcaccinolo/bclose'
-map <leader>d :Bclose!<cr> close buffer
+"close buffer 
+map <leader>d :Bclose!<cr>
 
 map <leader>tn :tabnew<cr>
 map <leader>tc :tabclose<cr>
