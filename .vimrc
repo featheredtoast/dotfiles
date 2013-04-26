@@ -12,7 +12,10 @@ Bundle 'gmarik/vundle'
 " }}}
 
 " Color schemes {{{
+" Attempt at 256 colors
 set t_Co=256
+" attempt at clearing background for different color backgrounds!
+set t_ut=
 Bundle 'jnurmine/Zenburn'
 Bundle 'tpope/vim-vividchalk'
 if has('gui_running')
@@ -82,7 +85,7 @@ map <leader>p :bp<cr>
 
 " bclose - keeps windows when closing buffers
 Bundle 'bcaccinolo/bclose'
-map <leader>d :Bclose<cr> close buffer
+map <leader>d :Bclose!<cr> close buffer
 
 map <leader>tn :tabnew<cr>
 map <leader>tc :tabclose<cr>
