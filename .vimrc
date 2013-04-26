@@ -12,13 +12,15 @@ Bundle 'gmarik/vundle'
 " }}}
 
 " Color schemes {{{
+set t_Co=256
 Bundle 'jnurmine/Zenburn'
 Bundle 'tpope/vim-vividchalk'
 if has('gui_running')
   colorscheme zenburn
 else
-  set background="dark"
-  colorscheme vividchalk
+  set background="light"
+  "colorscheme vividchalk
+  colorscheme zenburn
 endif
 "}}}
 
