@@ -29,16 +29,16 @@ endif
 
 " Nerdtree {{{
     Bundle 'scrooloose/nerdtree'
-    let NERDTreeShowHidden=1
+    let NERDTreeShowHidden=1 "show hidden files
+    autocmd vimenter * if !argc() | NERDTree | endif " Open tree automatically if no files specified
+    " f7 to open file explorer for nerdtree
+    nmap <F7> :NERDTreeToggle<CR>
 " }}}
 
 "Tagbar {{{
 Bundle 'majutsushi/tagbar'
 nmap <F8> :TagbarToggle<CR>
 "}}}
-
-" f7 to open file explorer for nerdtree
-nmap <F7> :NERDTreeToggle<CR>
 
 " Syntastic! {{{
 Bundle 'scrooloose/syntastic'
@@ -74,7 +74,7 @@ Bundle 'tpope/vim-fugitive'
 " MiniBufExplorer and buffer settings{{{
 Bundle 'fholgado/minibufexpl.vim'
 "let g:miniBufExplVSplit = 20 "try out vertical split
-let g:miniBufExplorerMoreThanOne=1 "always on
+"let g:miniBufExplorerMoreThanOne=1 "always on
 let g:miniBufExplUseSingleClick = 1 "single click to swap
 let g:miniBufExplMapWindowNavVim = 1 "ctrl-hjkl movement between windows
 let g:miniBufExplMapCTabSwitchBufs = 1 "ctrl-tab, ctrl-shit-tab, this only works in a gui like gvim, or macvim
