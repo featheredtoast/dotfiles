@@ -105,6 +105,7 @@ Bundle 'nelstrom/vim-visual-star-search'
 "Folds {{{
 set foldmethod=marker
 set foldlevel=99 "folds open by default
+set foldcolumn=3
 " }}}
 
 "Autocomplete ctrl-space {{{
@@ -206,6 +207,7 @@ set incsearch		" Incremental search
 set autowrite		" Automatically save before commands like :next and :make
 set hidden             " Hide buffers when they are abandoned
 set mouse=a		" Enable mouse usage (all modes)
+set number
 
 " For regular expressions turn magic on
 set magic
