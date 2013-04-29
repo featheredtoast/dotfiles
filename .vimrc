@@ -81,6 +81,7 @@ let g:miniBufExplUseSingleClick = 1 "single click to swap
 let g:miniBufExplMapWindowNavVim = 1 "ctrl-hjkl movement between windows
 let g:miniBufExplMapCTabSwitchBufs = 1 "ctrl-tab, ctrl-shit-tab, this only works in a gui like gvim, or macvim
 let g:miniBufExplModSelTarget = 1 " place selected buffers into a window that doesn't have a nonmodifiable buffer
+map <F6> :TMiniBufExplorer<cr>
 
 " Save my pinkie from death by too much shifting
 map <leader>n :bn<cr>
