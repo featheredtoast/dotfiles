@@ -3,6 +3,9 @@
 let mapleader = ","
 let g:mapleader = ","
 
+" Save current session
+map <F5> :call SaveCurrentSession()<CR>
+
 "Vundle - load plugins. Run command "vim +BundleInstall! +qa" {{{
 set nocompatible
 filetype off
@@ -30,7 +33,7 @@ endif
 " Nerdtree {{{
     Bundle 'scrooloose/nerdtree'
     let NERDTreeShowHidden=1 "show hidden files
-    autocmd vimenter * if !argc() | NERDTree | endif " Open tree automatically if no files specified
+    autocmd vimenter * if !argc() && v:this_session == '' | NERDTree | endif " Open tree automatically if no files specified, and we haven't loaded from a session
     " f7 to open file explorer for nerdtree
     nmap <F7> :NERDTreeToggle<CR>
     " Ignore git directory, c object files, java class files, and others that we do not want displayed in the tree
@@ -211,6 +214,7 @@ set autowrite		" Automatically save before commands like :next and :make
 set hidden             " Hide buffers when they are abandoned
 set mouse=a		" Enable mouse usage (all modes)
 set number
+set matchpairs+=<:>     " match on HTML/xml pairs
 
 " For regular expressions turn magic on
 set magic
@@ -261,5 +265,10 @@ function! HasPaste()
         return 'PASTE MODE  '
     en
     return ''
+endfunction
+
+function! SaveCurrentSession()
+    if v:this_session != '' | exec "mks! " . v:this_session | endif
+    echo "session saved"
 endfunction
 " }}}
