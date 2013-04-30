@@ -33,7 +33,7 @@ endif
 " Nerdtree {{{
     Bundle 'scrooloose/nerdtree'
     let NERDTreeShowHidden=1 "show hidden files
-    autocmd vimenter * if !argc() && v:this_session == '' | NERDTree | endif " Open tree automatically if no files specified, and we haven't loaded from a session
+    autocmd vimenter * if !argc() | NERDTree | endif " Open tree automatically if no files specified, and we haven't loaded from a session
     " f7 to open file explorer for nerdtree
     nmap <F7> :NERDTreeToggle<CR>
     " Ignore git directory, c object files, java class files, and others that we do not want displayed in the tree
@@ -268,7 +268,9 @@ function! HasPaste()
 endfunction
 
 function! SaveCurrentSession()
+    exec "NERDTreeClose"
+    if v:this_session == '' | let v:this_session = '~/.vimsession' | endif
     if v:this_session != '' | exec "mks! " . v:this_session | endif
-    echo "session saved"
+    echo "session saved to " . v:this_session
 endfunction
 " }}}
