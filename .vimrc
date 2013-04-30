@@ -3,8 +3,12 @@
 let mapleader = ","
 let g:mapleader = ","
 
-" Save current session
-map <F5> :call SaveCurrentSession()<CR>
+" Session management {{{
+    " Save current session
+    map <F5> :call SaveCurrentSession()<CR>
+    " Attempt to load current session
+    autocmd vimenter * if !argc() && v:this_session == "" | exec "source ~/.vimsession" | endif
+"}}}
 
 "Vundle - load plugins. Run command "vim +BundleInstall! +qa" {{{
 set nocompatible
@@ -268,7 +272,9 @@ function! HasPaste()
 endfunction
 
 function! SaveCurrentSession()
+    " Close nerd tree, it causes buffer issues
     exec "NERDTreeClose"
+    " Create a session, if none exists
     if v:this_session == '' | let v:this_session = '~/.vimsession' | endif
     if v:this_session != '' | exec "mks! " . v:this_session | endif
     echo "session saved to " . v:this_session
