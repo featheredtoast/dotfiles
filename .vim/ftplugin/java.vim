@@ -1,4 +1,4 @@
-" augment gf
+" augment gf command to find source files
 set suffixesadd=.java
 set path+=src
 

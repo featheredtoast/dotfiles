@@ -41,7 +41,7 @@ endif
     " f7 to open file explorer for nerdtree
     nmap <F7> :NERDTreeToggle<CR>
     " Ignore git directory, c object files, java class files, and others that we do not want displayed in the tree
-    let NERDTreeIgnore=['.git$[[dir]]', '.o$[[file]]', '.class$[[file]]']
+    let NERDTreeIgnore=['.git$[[dir]]', '.o$[[file]]', '.class$[[file]]','.swp$[[file]]']
 " }}}
 
 "Tagbar {{{
