@@ -49,6 +49,11 @@ Bundle 'majutsushi/tagbar'
 nmap <F8> :TagbarToggle<CR>
 "}}}
 
+" Tmux support {{{
+  Bundle 'ervandew/screen'
+  let g:ScreenImpl = 'Tmux'
+" }}}
+
 " Syntastic! {{{
 Bundle 'scrooloose/syntastic'
 let g:syntastic_auto_loc_list=1
