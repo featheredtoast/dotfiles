@@ -1,5 +1,6 @@
 [core]
 	editor = vim
+	excludesfile = ~/.git-user-ignore
 [user]
 	email = awole20@gmail.com
 	name = Jeff Wong
