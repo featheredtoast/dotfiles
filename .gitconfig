@@ -5,10 +5,10 @@
 	email = awole20@gmail.com
 	name = Jeff Wong
 [diff]
-        tool = p4diff
+        tool = vimdiff
 [merge]
         keepBackup = false;
-        tool = p4merge
+        tool = vimdiff
 [mergetool "p4merge"]
         cmd = p4merge-merge.sh \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
         trustExitCode = false
