@@ -77,6 +77,7 @@ setopt AUTO_PUSHD
 
 # zsh-hilighting, needs to be sourced before history-substring-search
 source ~/.zsh/zsh-syntax-highlighting.zsh
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 
 # zsh-history-substring-search
 # bind UP and DOWN arrow keys
