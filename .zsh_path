@@ -1,6 +1,8 @@
 typeset -U path
 
+# Hack to configure homebrew path's coreutils
 which -s brew>/dev/null && path=( $(brew --prefix coreutils)/libexec/gnubin $path)
 
+# add ~/bin, ~/ghar/bin to path
 path=( ~/bin ~/ghar/bin/ $path)
 manpath=( $manpath)
