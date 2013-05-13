@@ -75,6 +75,9 @@ setopt AUTO_PUSHD
 # display for xterm
 [ -z $DISPLAY ] && export DISPLAY=localhost:0.0
 
+# zsh-hilighting, needs to be sourced before history-substring-search
+source ~/.zsh/zsh-syntax-highlighting.zsh
+
 # zsh-history-substring-search
 # bind UP and DOWN arrow keys
 source ~/.zsh/zsh-history-substring-search.zsh
