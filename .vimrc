@@ -85,9 +85,6 @@ Bundle 'vim-scripts/IndexedSearch'
 " Git commands!
 Bundle 'tpope/vim-fugitive'
 
-" CoVim -- collaborative vim!
-Bundle 'FredKSchott/CoVim'
-
 " MiniBufExplorer and buffer settings{{{
 Bundle 'fholgado/minibufexpl.vim'
 "let g:miniBufExplVSplit = 20 "try out vertical split
