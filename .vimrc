@@ -222,7 +222,13 @@ set incsearch		" Incremental search
 set autowrite		" Automatically save before commands like :next and :make
 set hidden             " Hide buffers when they are abandoned
 set mouse=a		" Enable mouse usage (all modes)
-set number
+set relativenumber
+if has("autocmd")
+    autocmd FocusLost * :set number
+    autocmd InsertEnter * :set number
+    autocmd InsertLeave * :set relativenumber
+    autocmd CursorMoved * :set relativenumber
+endif
 set matchpairs+=<:>     " match on HTML/xml pairs
 
 " For regular expressions turn magic on
