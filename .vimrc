@@ -88,12 +88,13 @@ Bundle 'tpope/vim-fugitive'
 " MiniBufExplorer and buffer settings{{{
 Bundle 'fholgado/minibufexpl.vim'
 "let g:miniBufExplVSplit = 20 "try out vertical split
-let g:miniBufExplorerMoreThanOne=5 "always on
+let g:miniBufExplorerMoreThanOne=100 "hide screen until there are 100 buffers. Hoping never.
 let g:miniBufExplUseSingleClick = 1 "single click to swap
 let g:miniBufExplMapWindowNavVim = 1 "ctrl-hjkl movement between windows
 let g:miniBufExplMapCTabSwitchBufs = 1 "ctrl-tab, ctrl-shit-tab, this only works in a gui like gvim, or macvim
 let g:miniBufExplModSelTarget = 1 " place selected buffers into a window that doesn't have a nonmodifiable buffer
-map <F6> :TMiniBufExplorer<cr>
+" With the morethanone option set so high, f6 will essencially be a bufferls. On exiting the minibufwindow, it'll close again!
+map <F6> :MiniBufExplorer<cr>
 
 " Save my pinkie from death by too much shifting
 map <leader>n :bn<cr>
