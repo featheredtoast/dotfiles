@@ -7,7 +7,8 @@ let g:mapleader = ","
     " Save current session
     map <F5> :call SaveCurrentSession()<CR>
     " Attempt to load current session
-    autocmd vimenter * if !argc() && v:this_session == "" | exec "source ~/.vimsession" | endif
+    " autocmd vimenter * if !argc() && v:this_session == "" | exec "source ~/.vimsession" | endif
+    map <F9> :source ~/.vimsession<CR>
 "}}}
 
 "Vundle - load plugins. Run command "vim +BundleInstall! +qa" {{{
@@ -117,6 +118,9 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " Visual Star Search
 Bundle 'nelstrom/vim-visual-star-search'
+
+" floobits -- code sharing?
+Bundle 'Floobits/floobits-vim'
 
 "Folds {{{
 set foldmethod=marker
