@@ -99,10 +99,10 @@ map <F6> :MiniBufExplorer<cr>
 
 
 " Use ctrl-[hjkl] to select the active split!
-nmap <silent> <c-k> :wincmd k<CR>                                                                                                                       
-nmap <silent> <c-j> :wincmd j<CR>                                                                                                                       
-nmap <silent> <c-h> :wincmd h<CR>                                                                                                                       
-nmap <silent> <c-l> :wincmd l<CR>
+map <C-k> <C-w><Up>
+map <C-j> <C-w><Down>
+map <C-l> <C-w><Right>
+map <C-h> <C-w><Left>
 
 " Save my pinkie from death by too much shifting
 map <leader>n :bn<cr>
