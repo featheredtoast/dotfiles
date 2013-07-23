@@ -90,7 +90,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'fholgado/minibufexpl.vim'
 let g:miniBufExplBuffersNeeded=100 "hide screen until there are 100 buffers. Hoping this never happens. Essencially manual mode
 let g:miniBufExplUseSingleClick = 1 "single click to swap
-map <F6> :MBEToggle<cr>
+map <F6> :MBEToggleAll<cr>
 
 
 " Use ctrl-[hjkl] to select the active split!
@@ -104,9 +104,7 @@ map <leader>n :bn<cr>
 map <leader>p :bp<cr>
 
 " bclose - keeps windows when closing buffers
-Bundle 'bcaccinolo/bclose'
-"close buffer 
-map <leader>d :Bclose!<cr>
+map <leader>d :MBEbd!<cr>
 
 map <leader>tn :tabnew<cr>
 map <leader>tc :tabclose<cr>
@@ -121,10 +119,12 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 " Visual Star Search
 Bundle 'nelstrom/vim-visual-star-search'
 
+" autocomplete! see readme for details for installation. It's pretty awesome.
 Bundle 'Valloric/YouCompleteMe'
 
 " floobits -- code sharing?
 Bundle 'Floobits/floobits-vim'
+" floobits likes YouCompleteMe to reduce updatetime so that code is more in sync
 let g:ycm_allow_changing_updatetime=0
 
 "Folds {{{
