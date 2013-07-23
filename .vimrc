@@ -121,8 +121,11 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 " Visual Star Search
 Bundle 'nelstrom/vim-visual-star-search'
 
+Bundle 'Valloric/YouCompleteMe'
+
 " floobits -- code sharing?
 Bundle 'Floobits/floobits-vim'
+let g:ycm_allow_changing_updatetime=0
 
 "Folds {{{
 set foldmethod=marker
