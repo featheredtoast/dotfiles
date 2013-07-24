@@ -57,7 +57,6 @@ nmap <F8> :TagbarToggle<CR>
 
 " Syntastic! {{{
 Bundle 'scrooloose/syntastic'
-let g:syntastic_auto_loc_list=1
 let g:syntastic_java_javac_config_file_enabled=1
 " }}}
 
@@ -282,6 +281,10 @@ set laststatus=2
 
 " Format the status line
 set statusline=\ %{HasPaste()}%F%m%r%{fugitive#statusline()}%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+"syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 " }}}
 
 " Helpers {{{
