@@ -175,6 +175,9 @@ set wildmenu
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
 
+" wildignorecase - :e document to become Document!
+set wildignorecase
+
 "Always show current position
 set ruler
 
