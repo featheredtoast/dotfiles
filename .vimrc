@@ -83,6 +83,9 @@ Bundle 'tpope/vim-unimpaired'
 " unimpaired) with .
 Bundle 'tpope/vim-repeat'
 
+" dispatch for testing
+Bundle 'tpope/vim-dispatch'
+
 " Tabular!
 Bundle 'godlygeek/tabular'
 
