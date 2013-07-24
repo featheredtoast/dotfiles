@@ -55,9 +55,13 @@ nmap <F8> :TagbarToggle<CR>
   let g:ScreenImpl = 'Tmux'
 " }}}
 
-" Syntastic! {{{
+" Syntastic! ...and I suppose eclim can go in here, these are similar{{{
 Bundle 'scrooloose/syntastic'
 let g:syntastic_java_javac_config_file_enabled=1
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
+let g:EclimQuickfixSignText='✗'
+let g:EclimLocListSignText='⚠'
 " }}}
 
 " Let ^A/^X work on date/timestamps
@@ -69,7 +73,7 @@ Bundle 'tpope/vim-markdown'
 " re/un/wrap manipulation
 Bundle 'tpope/vim-surround'
 
-" Extend bracket mappings
+" Extend bracket mappings, including [b, ]b for previous and next buffers
 Bundle 'tpope/vim-unimpaired'
 
 " Enable repeating various other tpope (surround, speeddating, abolish,
@@ -98,10 +102,6 @@ noremap <C-K>     <C-W>k
 noremap <C-H>     <C-W>h
 noremap <C-L>     <C-W>l
 
-" Save my pinkie from death by too much shifting
-map <leader>n :bn<cr>
-map <leader>p :bp<cr>
-
 " bclose - keeps windows when closing buffers
 map <leader>d :MBEbd!<cr>
 
@@ -120,6 +120,8 @@ Bundle 'nelstrom/vim-visual-star-search'
 
 " autocomplete! see readme for details for installation. It's pretty awesome.
 Bundle 'Valloric/YouCompleteMe'
+" if under eclim, lets YouCompleteMe and eclim play nice
+let g:EclimCompletionMethod = 'omnifunc'
 
 " floobits -- code sharing?
 Bundle 'Floobits/floobits-vim'
@@ -177,9 +179,6 @@ highlight SpecialKey guifg=#4a4a59
 " }}}
 
 " VIM user interface {{{
-" Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
-
 " Turn on the WiLd menu
 set wildmenu
 
