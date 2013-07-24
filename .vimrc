@@ -60,8 +60,11 @@ Bundle 'scrooloose/syntastic'
 let g:syntastic_java_javac_config_file_enabled=1
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
+" }}}
+" Eclim settings, if eclim is installed {{{
 let g:EclimQuickfixSignText='✗'
 let g:EclimLocListSignText='⚠'
+map <F3> :JavaSearchContext<cr>
 " }}}
 
 " Let ^A/^X work on date/timestamps
@@ -132,19 +135,6 @@ let g:ycm_allow_changing_updatetime=0
 set foldmethod=marker
 set foldlevel=99 "folds open by default
 set foldcolumn=3
-" }}}
-
-"Autocomplete ctrl-space {{{
-if has("gui_running")
-    " C-Space seems to work under gVim on both Linux and win32
-    inoremap <C-Space> <C-n>
-else " no gui
-    if has("unix")
-        inoremap <Nul> <C-n>
-    else
-    " I have no idea of the name of Ctrl-Space elsewhere
-    endif
-endif
 " }}}
 
 " Strip trailing whitespace with <leader>$ {{{
