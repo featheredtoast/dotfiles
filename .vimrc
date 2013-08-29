@@ -30,8 +30,8 @@ if has('gui_running')
   colorscheme zenburn
 else
   set background="light"
-  colorscheme vividchalk
-  "colorscheme zenburn
+  "colorscheme vividchalk
+  colorscheme zenburn
 endif
 "}}}
 
