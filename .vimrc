@@ -50,11 +50,6 @@ Bundle 'majutsushi/tagbar'
 nmap <F8> :TagbarToggle<CR>
 "}}}
 
-" Tmux support {{{
-  Bundle 'ervandew/screen'
-  let g:ScreenImpl = 'Tmux'
-" }}}
-
 " Syntastic! ...and I suppose eclim can go in here, these are similar{{{
 Bundle 'scrooloose/syntastic'
 let g:syntastic_java_javac_config_file_enabled=1
@@ -82,9 +77,6 @@ Bundle 'tpope/vim-unimpaired'
 " Enable repeating various other tpope (surround, speeddating, abolish,
 " unimpaired) with .
 Bundle 'tpope/vim-repeat'
-
-" dispatch for testing
-Bundle 'tpope/vim-dispatch'
 
 " Tabular!
 Bundle 'godlygeek/tabular'
