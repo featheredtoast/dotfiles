@@ -30,8 +30,8 @@ if has('gui_running')
   colorscheme zenburn
 else
   set background="light"
-  "colorscheme vividchalk
-  colorscheme zenburn
+  colorscheme vividchalk
+  "colorscheme zenburn
 endif
 "}}}
 
@@ -130,9 +130,9 @@ Bundle 'Valloric/YouCompleteMe'
 let g:EclimCompletionMethod = 'omnifunc'
 
 " floobits -- code sharing?
-Bundle 'Floobits/floobits-vim'
+" Bundle 'Floobits/floobits-vim'
 " floobits likes YouCompleteMe to reduce updatetime so that code is more in sync
-let g:ycm_allow_changing_updatetime=0
+" let g:ycm_allow_changing_updatetime=0
 
 "Folds {{{
 set foldmethod=marker
