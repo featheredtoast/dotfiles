@@ -5,19 +5,20 @@
 	email = awole20@gmail.com
 	name = Jeff Wong
 [diff]
-        tool = vimdiff
+    tool = vimdiff
 [merge]
-        keepBackup = false;
-        tool = vimdiff
+    keepBackup = false;
+    tool = vimdiff
+	ff = false
 [mergetool "p4merge"]
-        cmd = p4merge-merge.sh \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
-        trustExitCode = false
+    cmd = p4merge-merge.sh \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+    trustExitCode = false
 [difftool "p4diff"]
-        cmd = p4merge-diff.sh \"$LOCAL\" \"$REMOTE\" \"$BASE\" || p4merge \"$LOCAL\" \"$REMOTE\"
+    cmd = p4merge-diff.sh \"$LOCAL\" \"$REMOTE\" \"$BASE\" || p4merge \"$LOCAL\" \"$REMOTE\"
 [alias]
-        lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-        lost = !"gitk --all $(git log -g --pretty=format:%h)"
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lost = !"gitk --all $(git log -g --pretty=format:%h)"
 
 [push]
     #default = simple #is not supported until later, use tracking for now
-	default = tracking
+    default = tracking
