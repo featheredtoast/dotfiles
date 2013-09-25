@@ -18,7 +18,8 @@
 [alias]
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     lost = !"gitk --all $(git log -g --pretty=format:%h)"
-
 [push]
     #default = simple #is not supported until later, use tracking for now
     default = tracking
+[instaweb]
+    local = true
