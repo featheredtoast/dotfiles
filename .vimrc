@@ -101,7 +101,10 @@ noremap <C-H>     <C-W>h
 noremap <C-L>     <C-W>l
 
 " bclose - keeps windows when closing buffers
-map <leader>d :MBEbd!<cr>
+Bundle 'bcaccinolo/bclose'
+"close buffer 
+map <leader>d :Bclose!<cr> 
+"map <leader>d :MBEbd!<cr> "MBE close sometimes threw errors and we no likie.
 
 map <leader>tn :tabnew<cr>
 map <leader>tc :tabclose<cr>
