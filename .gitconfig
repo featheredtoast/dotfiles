@@ -23,3 +23,5 @@
     default = tracking
 [instaweb]
     local = true
+[branch]
+	autosetuprebase = always
