@@ -73,6 +73,9 @@ Bundle 'tpope/vim-surround'
 
 " Extend bracket mappings, including [b, ]b for previous and next buffers
 Bundle 'tpope/vim-unimpaired'
+" Extend to include base 64 encoding/decoding
+vnoremap [Y c<c-r>=system('base64 ', @")<cr><esc>
+vnoremap ]Y c<c-r>=system('base64 --decode', @")<cr><esc>
 
 " Enable repeating various other tpope (surround, speeddating, abolish,
 " unimpaired) with .
