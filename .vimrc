@@ -267,6 +267,12 @@ set si "Smart indent
 set wrap "Wrap lines
 " }}}
 
+" Files, backups {{{
+set nobackup
+set nowb
+set noswapfile
+" }}}
+
 
 " Status line {{{
 " Always show the status line
