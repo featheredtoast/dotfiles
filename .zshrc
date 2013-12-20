@@ -63,7 +63,7 @@ bindkey -e '\e[3~' delete-char
 #store path
 [ -f ~/.zsh_path ] && source ~/.zsh_path
 #store ssh
-[ -f ~/.zsh_ssh_agent ] && source ~/.zsh_ssh_agent
+[ -f ~/.zsh_agents ] && source ~/.zsh_agents
 #ghar completion
 autoload -Uz bashcompinit
 bashcompinit
