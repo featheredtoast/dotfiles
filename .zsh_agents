@@ -10,11 +10,9 @@ function start_agent {
 }
 
 ## ssh-agent
-if [ -e "$SSH_AUTH_SOCK" ]; then
-  echo "Using ${SSH_AUTH_SOCK}"
-elif [ -f "${SSH_ENV}" ]; then
-  echo "Using ${SSH_ENV}"
+if [ -f "${SSH_ENV}" ]; then
   source ${SSH_ENV} > /dev/null
+  echo "Using ${SSH_ENV} with pid ${SSH_AGENT_PID}"
   ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
     echo "${SSH_ENV} agent is no longer running"
     start_agent;
@@ -28,9 +26,11 @@ if [ $EUID -ne 0 ] ; then
     if [[ -e "$envfile" ]] && kill -0 $(grep GPG_AGENT_INFO "$envfile" | cut -d: -f 2) 2>/dev/null; then
         eval "$(cat "$envfile")"
     else
-        eval "$(gpg-agent --daemon --enable-ssh-support --write-env-file "$envfile")"
+        #can add ssh support to gpg agent... I'm not sure about this though yet.
+        #eval "$(gpg-agent --daemon --enable-ssh-support --write-env-file "$envfile")"
+        eval "$(gpg-agent --daemon --write-env-file "$envfile")"
     fi
     export GPG_AGENT_INFO  # the env file does not contain the export statement
-    export SSH_AUTH_SOCK   # enable gpg-agent for ssh
+    #export SSH_AUTH_SOCK   # enable gpg-agent for ssh
 fi
 
