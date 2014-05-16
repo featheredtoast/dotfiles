@@ -111,7 +111,7 @@ venv_rprompt () {
         RPROMPT+="${white} venv:$(basename $VIRTUAL_ENV)${reset}"
     fi
 		RPROMPT+="%F${white}%* %F${blue}%n${cyan}"
-		[[ -n $SSH_CLIENT ]] && RPROMPT+="@%U%m%u"
+		RPROMPT+="@%U%m%u"
 		RPROMPT+="%f"
 }
 
