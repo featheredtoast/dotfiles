@@ -4,5 +4,5 @@ typeset -U path
 which -s brew>/dev/null && path=( $(brew --prefix coreutils)/libexec/gnubin $path)
 
 # add ~/bin, ~/ghar/bin to path
-path=( ~/bin ~/ghar/bin/ $path)
+path=( ~/bin ~/ghar/bin /usr/local/bin $path)
 manpath=( $manpath)
