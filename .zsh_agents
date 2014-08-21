@@ -33,4 +33,5 @@ if [ $EUID -ne 0 ] ; then
     export GPG_AGENT_INFO  # the env file does not contain the export statement
     #export SSH_AUTH_SOCK   # enable gpg-agent for ssh
 fi
+export GPG_TTY=$(tty)
 
