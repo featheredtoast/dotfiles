@@ -55,6 +55,7 @@ bindkey -e
 # fucking macs - fixes fn-delete
 bindkey -e '\e[3~' delete-char
 
+WORDCHARS=''
 
 # this prompt has too much shit.
 [ -f ~/.zsh_prompt ] && source ~/.zsh_prompt
