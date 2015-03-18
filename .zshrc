@@ -19,7 +19,6 @@ zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' glob unset
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' insert-unambiguous true
-#zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-colors "=(#b) #([0-9]#)*=36=31"
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]} r:|[._-]=** r:|=**' '' 'l:|=* r:|=*'
 zstyle ':completion:*' max-errors 3 numeric
