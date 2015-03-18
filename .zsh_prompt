@@ -29,8 +29,6 @@ zstyle ':vcs_info:git*' actionformats "(%s|${white}%a${gray}) %12.12i %c%u %b%m"
 zstyle ':vcs_info:git*:*' stagedstr "${green}S${gray}"
 zstyle ':vcs_info:git*:*' unstagedstr "${red}U${gray}"
 
-# zstyle ':vcs_info:*+*:*' debug true
-
 zstyle ':vcs_info:git*+set-message:*' hooks git-st git-stash
 
 # Show remote ref name and number of commits ahead-of or behind
