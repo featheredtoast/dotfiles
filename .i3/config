@@ -152,4 +152,6 @@ bar {
 # lockscreen
 bindsym $mod+Shift+Return exec "i3lock -c 000000"
 
-exec nohup davmail &
+#Move the current workspace to the next output
+# (effectively toggles when you only have two outputs)
+bindsym $mod+x move workspace to output right
