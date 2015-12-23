@@ -1,4 +1,5 @@
-
+# support connection via emacs http://www.emacswiki.org/emacs/TrampMode#toc3
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 if [[ $- != *i* ]] ; then
 	# Shell is non-interactive.  Be done now!
 	return
