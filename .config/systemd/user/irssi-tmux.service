@@ -1,0 +1,11 @@
+[Unit]
+Description=Start up irssi in a tmux window please
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/tmux new-session -d -s irssi -n irssi irssi
+ExecStop=/usr/bin/tmux kill-session -t irssi
+Restart=always
+
+[Install]
+WantedBy=default.target
