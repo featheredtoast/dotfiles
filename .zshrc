@@ -76,26 +76,9 @@ setopt AUTO_PUSHD
 # display for xterm
 [ -z $DISPLAY ] && export DISPLAY=localhost:0.0
 
-# zsh-hilighting, needs to be sourced before history-substring-search
-source ~/.zsh/zsh-syntax-highlighting.zsh
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
 
-# zsh-history-substring-search
-# bind UP and DOWN arrow keys
-source ~/.zsh/zsh-history-substring-search.zsh
-zmodload zsh/terminfo
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
-# bind UP and DOWN arrow keys for ubuntu 12.04
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-
-# bind P and N for EMACS mode
-bindkey -M emacs '^P' history-substring-search-up
-bindkey -M emacs '^N' history-substring-search-down
-
-# bind k and j for VI mode
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
-
-haste() { a=$(cat); curl -X POST -s -d "$a" https://paste.luz.com/documents | awk -F '"' '{print "https://paste.luz.com/"$4}'; }
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/jwong/.sdkman"
+[[ -s "/home/jwong/.sdkman/bin/sdkman-init.sh" ]] && source "/home/jwong/.sdkman/bin/sdkman-init.sh"
