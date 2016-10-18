@@ -184,3 +184,8 @@ alias gignore='git update-index --assume-unchanged'
 alias gunignore='git update-index --no-assume-unchanged'
 # list temporarily ignored files
 alias gignored='git ls-files -v | grep "^[[:lower:]]"'
+
+#terraform
+alias tf='terraform'
+alias tp='terraform plan'
+alias ta='terraform apply'
