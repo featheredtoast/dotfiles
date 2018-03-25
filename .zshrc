@@ -30,7 +30,7 @@ zstyle ':completion:*' prompt '%e'
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*' verbose true
-zstyle :compinstall filename '/home/jwong/.zshrc'
+zstyle :compinstall filename '$HOME/.zshrc'
 
 autoload -Uz compinit
 compinit
@@ -83,5 +83,5 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 [[ -d ~/.rbenv ]] && eval "$(rbenv init - --no-rehash)"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/jwong/.sdkman"
-[[ -s ~/.sdkman/bin/sdkman-init.sh ]] && source "/home/jwong/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s ~/.sdkman/bin/sdkman-init.sh ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
