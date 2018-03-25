@@ -11,21 +11,69 @@ let g:mapleader = ","
     map <F9> :source ~/.vimsession<CR>
 "}}}
 
-"Vundle - load plugins. Run command "vim +BundleInstall! +qa" {{{
+"Vundle - load plugins. Run command "vim +PluginInstall! +qa" {{{
 set nocompatible
 filetype off
-set runtimepath+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/vundle
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 " }}}
+
+" Plugins
+Plugin 'jnurmine/Zenburn'
+Plugin 'tpope/vim-vividchalk'
+Plugin 'scrooloose/nerdtree'
+Plugin 'majutsushi/tagbar'
+Plugin 'scrooloose/syntastic'
+
+" Let ^A/^X work on date/timestamps
+Plugin 'tpope/vim-speeddating'
+
+" Markdown syntax files
+Plugin 'tpope/vim-markdown'
+
+" re/un/wrap manipulation
+Plugin 'tpope/vim-surround'
+
+" Extend bracket mappings, including [b, ]b for previous and next buffers
+Plugin 'tpope/vim-unimpaired'
+
+" Enable repeating various other tpope (surround, speeddating, abolish,
+" unimpaired) with .
+Plugin 'tpope/vim-repeat'
+
+" Tabular!
+Plugin 'godlygeek/tabular'
+
+" Indexed Search!
+Plugin 'vim-scripts/IndexedSearch'
+
+" Git commands!
+Plugin 'tpope/vim-fugitive'
+
+Plugin 'fholgado/minibufexpl.vim'
+
+Plugin 'bcaccinolo/bclose'
+
+" Visual Star Search
+Plugin 'nelstrom/vim-visual-star-search'
+
+" ctrl-p for filesearching?
+Plugin 'kien/ctrlp.vim'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 " Color schemes {{{
 " Attempt at 256 colors
 set t_Co=256
 " attempt at clearing background for different color backgrounds!
 set t_ut=
-Bundle 'jnurmine/Zenburn'
-Bundle 'tpope/vim-vividchalk'
 if has('gui_running')
   colorscheme zenburn
 else
@@ -36,7 +84,6 @@ endif
 "}}}
 
 " Nerdtree {{{
-    Bundle 'scrooloose/nerdtree'
     let NERDTreeShowHidden=1 "show hidden files
     autocmd vimenter * if !argc() | NERDTree | endif " Open tree automatically if no files specified, and we haven't loaded from a session
     " f7 to open file explorer for nerdtree
@@ -46,12 +93,10 @@ endif
 " }}}
 
 "Tagbar {{{
-Bundle 'majutsushi/tagbar'
 nmap <F8> :TagbarToggle<CR>
 "}}}
 
 " Syntastic! ...and I suppose eclim can go in here, these are similar{{{
-Bundle 'scrooloose/syntastic'
 let g:syntastic_java_javac_config_file_enabled=1
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
@@ -62,36 +107,12 @@ let g:EclimLocListSignText='⚠'
 map <F3> :JavaSearchContext<cr>
 " }}}
 
-" Let ^A/^X work on date/timestamps
-Bundle 'tpope/vim-speeddating'
-
-" Markdown syntax files
-Bundle 'tpope/vim-markdown'
-
-" re/un/wrap manipulation
-Bundle 'tpope/vim-surround'
-
-" Extend bracket mappings, including [b, ]b for previous and next buffers
-Bundle 'tpope/vim-unimpaired'
 " Extend to include base 64 encoding/decoding
 vnoremap [Y c<c-r>=system('base64 ', @")<cr><esc>
 vnoremap ]Y c<c-r>=system('base64 --decode', @")<cr><esc>
 
-" Enable repeating various other tpope (surround, speeddating, abolish,
-" unimpaired) with .
-Bundle 'tpope/vim-repeat'
-
-" Tabular!
-Bundle 'godlygeek/tabular'
-
-" Indexed Search!
-Bundle 'vim-scripts/IndexedSearch'
-
-" Git commands!
-Bundle 'tpope/vim-fugitive'
 
 " MiniBufExplorer and buffer settings{{{
-Bundle 'fholgado/minibufexpl.vim'
 let g:miniBufExplBuffersNeeded=100 "hide screen until there are 100 buffers. Hoping this never happens. Essencially manual mode
 let g:miniBufExplUseSingleClick = 1 "single click to swap
 map <F6> :MBEToggleAll<cr>
@@ -104,7 +125,6 @@ noremap <C-H>     <C-W>h
 noremap <C-L>     <C-W>l
 
 " bclose - keeps windows when closing buffers
-Bundle 'bcaccinolo/bclose'
 "close buffer 
 map <leader>d :Bclose!<cr> 
 "map <leader>d :MBEbd!<cr> "MBE close sometimes threw errors and we no likie.
@@ -119,11 +139,6 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 " }}}
 
-" Visual Star Search
-Bundle 'nelstrom/vim-visual-star-search'
-
-" ctrl-p for filesearching?
-Bundle 'kien/ctrlp.vim'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
@@ -136,16 +151,6 @@ let g:ctrlp_custom_ignore = {
   \ }
 " let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
 " let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'  " Windows
-
-" autocomplete! see readme for details for installation. It's pretty awesome.
-Bundle 'Valloric/YouCompleteMe'
-" if under eclim, lets YouCompleteMe and eclim play nice
-let g:EclimCompletionMethod = 'omnifunc'
-
-" floobits -- code sharing?
-" Bundle 'Floobits/floobits-vim'
-" floobits likes YouCompleteMe to reduce updatetime so that code is more in sync
-" let g:ycm_allow_changing_updatetime=0
 
 "Folds {{{
 set foldmethod=marker
@@ -318,3 +323,4 @@ function! SaveCurrentSession()
     echo "session saved to " . v:this_session
 endfunction
 " }}}
+
