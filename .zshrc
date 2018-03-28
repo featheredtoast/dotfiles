@@ -82,6 +82,9 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 [[ -d ~/.rbenv ]] && eval "$(rbenv init - --no-rehash)"
 
+# direnv - set up per-directory environments https://direnv.net/
+hash direnv && eval "$(direnv hook zsh)"
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s ~/.sdkman/bin/sdkman-init.sh ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
