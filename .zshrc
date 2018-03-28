@@ -79,9 +79,6 @@ setopt AUTO_PUSHD
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-[[ -d ~/.rbenv ]] && eval "$(rbenv init - --no-rehash)"
-
 # direnv - set up per-directory environments https://direnv.net/
 hash direnv && eval "$(direnv hook zsh)"
 

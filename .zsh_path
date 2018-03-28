@@ -6,3 +6,5 @@ which -s brew>/dev/null && path=( $(brew --prefix coreutils)/libexec/gnubin $pat
 # add ~/bin, ~/ghar/bin to path
 path=( ~/bin ~/ghar/bin /usr/local/bin $path)
 manpath=( $manpath)
+
+which rbenv && eval "$(rbenv init - --no-rehash)" && path=("$HOME/.rbenv/bin" $path)
