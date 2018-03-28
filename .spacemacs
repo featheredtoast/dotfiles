@@ -320,7 +320,7 @@ you should place your code here."
   (smartparens-global-strict-mode)
   (add-to-list 'auto-mode-alist '("\\.js.es6\\'" . javascript-mode))
   (exec-path-from-shell-copy-env "SSH_AGENT_PID")
-  (exec-path-from-shell-copy-env "SSH_AGENT_SOCK")
+  (exec-path-from-shell-copy-env "SSH_AUTH_SOCK")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
