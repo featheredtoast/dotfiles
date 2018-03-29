@@ -80,7 +80,7 @@ setopt AUTO_PUSHD
 export PATH="/usr/local/heroku/bin:$PATH"
 
 # direnv - set up per-directory environments https://direnv.net/
-hash direnv && eval "$(direnv hook zsh)"
+which -s direnv>/dev/null && eval "$(direnv hook zsh)"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
