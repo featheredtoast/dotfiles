@@ -323,6 +323,7 @@ you should place your code here."
   (add-to-list 'auto-mode-alist '("\\.js.es6\\'" . javascript-mode))
   (exec-path-from-shell-copy-env "SSH_AGENT_PID")
   (exec-path-from-shell-copy-env "SSH_AUTH_SOCK")
+  (setq projectile-switch-project-action 'projectile-vc)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
