@@ -6,6 +6,8 @@
   "Configuration Layers declaration.
 You should not put any user code in this function besides modifying the variable
 values."
+  '((ruby :variables ruby-enable-enh-ruby-mode t))
+  '((ruby :variables ruby-version-manager 'rvm))
   (setq-default
    ;; Base distribution to use. This is a layer contained in the directory
    ;; `+distribution'. For now available distributions are `spacemacs-base'
@@ -325,6 +327,9 @@ you should place your code here."
   (sp-use-paredit-bindings)
   (add-hook 'clojure-mode-hook 'paredit-mode)
   (add-hook 'js-mode-hook 'prettier-js-mode)
+  (add-hook 'ruby-mode-hook
+            (lambda ()
+              (add-hook 'before-save-hook 'rubocop-autocorrect-current-file)))
   (global-set-key (kbd "C-=") 'er/expand-region)
   (global-set-key (kbd "C-+") 'er/contract-region)
   (smartparens-global-strict-mode)
