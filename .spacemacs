@@ -329,7 +329,7 @@ you should place your code here."
   (add-hook 'js-mode-hook 'prettier-js-mode)
   (add-hook 'ruby-mode-hook
             (lambda ()
-              (add-hook 'before-save-hook 'rubocop-autocorrect-current-file)))
+              (add-hook 'before-save-hook 'rubocop-autocorrect-current-file nil t)))
   (global-set-key (kbd "C-=") 'er/expand-region)
   (global-set-key (kbd "C-+") 'er/contract-region)
   (smartparens-global-strict-mode)
