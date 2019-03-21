@@ -330,6 +330,16 @@ you should place your code here."
   (add-hook 'ruby-mode-hook
             (lambda ()
               (add-hook 'before-save-hook 'rubocop-autocorrect-current-file nil t)))
+; https://emacs.stackexchange.com/questions/62/hide-compilation-window
+  (setq compilation-finish-function
+        (lambda (buf str)
+          (if (null (string-match ".*exited abnormally.*" str))
+              ;;no errors, make the compilation window go away in a few seconds
+              (progn
+                (run-at-time
+                 "2 sec" nil 'delete-window
+                 (get-buffer-window buf t))
+                (message "No Compilation Errors yay!")))))
   (global-set-key (kbd "C-=") 'er/expand-region)
   (global-set-key (kbd "C-+") 'er/contract-region)
   (smartparens-global-strict-mode)
