@@ -341,6 +341,13 @@ you should place your code here."
                  "2 sec" nil 'delete-window
                  (get-buffer-window buf t))
                 (message "No Compilation Errors yay!")))))
+  (add-hook 'compilation-mode-hook
+            (lambda ()
+              "Make sure that the compile window is splitting vertically."
+              (progn
+                (if (not (get-buffer-window "*compilation*"))
+                    (progn
+                      (split-window-vertically))))))
   (global-set-key (kbd "C-=") 'er/expand-region)
   (global-set-key (kbd "C-+") 'er/contract-region)
   (smartparens-global-strict-mode)
