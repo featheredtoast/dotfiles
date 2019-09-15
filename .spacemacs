@@ -457,7 +457,6 @@ This function defines the environment variables for your Emacs session. By
 default it calls `spacemacs/load-spacemacs-env' which loads the environment
 variables declared in `~/.spacemacs.env' or `~/.spacemacs.d/.spacemacs.env'.
 See the header of this file for more information."
-  (setq exec-path-from-shell-variables '("SSH_AGENT_PID" "SSH_AUTH_SOCK"))
   (spacemacs/load-spacemacs-env)
   )
 
@@ -482,6 +481,8 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  (setq exec-path-from-shell-variables '("SSH_AGENT_PID" "SSH_AUTH_SOCK"))
+  (exec-path-from-shell-initialize)
   (sp-use-paredit-bindings)
   (add-hook 'clojure-mode-hook 'paredit-mode)
   (add-hook 'js-mode-hook 'prettier-js-mode)
