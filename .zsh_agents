@@ -1,5 +1,5 @@
 # ssh agent -- for shared home directory across hosts
-SSH_ENV=$HOME/.ssh/.environment.`hostname`
+SSH_ENV=$HOME/.ssh/.environment.`hostname -s`
 function start_agent {
   echo "Starting a new ssh-agent on this host"
   ssh-agent | sed 's/^echo/#echo/' > ${SSH_ENV}
