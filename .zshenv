@@ -15,7 +15,6 @@ manpath=( $manpath)
 # ssh agent -- for shared home directory across hosts
 SSH_ENV=$HOME/.ssh/.environment.`hostname -s`
 function start_agent {
-    echo "Starting a new ssh-agent on this host"
     ssh-agent | sed 's/^echo/#echo/' > ${SSH_ENV}
     chmod 600 ${SSH_ENV}
     source ${SSH_ENV} > /dev/null
@@ -25,9 +24,7 @@ function start_agent {
 ## ssh-agent
 if [ -f "${SSH_ENV}" ]; then
     source ${SSH_ENV} > /dev/null
-    echo "Using ${SSH_ENV} with pid ${SSH_AGENT_PID}"
     ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-        echo "${SSH_ENV} agent is no longer running"
         start_agent;
     }
 else
