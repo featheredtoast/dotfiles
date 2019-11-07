@@ -18,7 +18,6 @@ function start_agent {
     ssh-agent | sed 's/^echo/#echo/' > ${SSH_ENV}
     chmod 600 ${SSH_ENV}
     source ${SSH_ENV} > /dev/null
-    echo succeeded
 }
 
 ## ssh-agent
