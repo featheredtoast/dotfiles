@@ -6,7 +6,7 @@
   "Layer configuration:
 This function should only modify configuration layer settings."
   '((ruby :variables ruby-enable-enh-ruby-mode t))
-  '((ruby :variables ruby-version-manager 'rvm))
+  '((ruby :variables ruby-version-manager 'rbenv))
   (setq-default
    ;; Base distribution to use. This is a layer contained in the directory
    ;; `+distribution'. For now available distributions are `spacemacs-base'
@@ -219,7 +219,7 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-colorize-cursor-according-to-state t
 
    ;; Default font or prioritized list of fonts.
-   dotspacemacs-default-font '("Source Code Pro"
+   dotspacemacs-default-font '("Source Code Variable Medium"
                                :size 12.0
                                :weight normal
                                :width normal)
