@@ -491,15 +491,18 @@ before packages are loaded."
             (lambda ()
               (add-hook 'before-save-hook 'rubocop-autocorrect-current-file nil t)))
 ; https://emacs.stackexchange.com/questions/62/hide-compilation-window
-  (setq compilation-finish-function
-        (lambda (buf str)
-          (if (null (string-match ".*exited abnormally.*" str))
-              ;;no errors, make the compilation window go away in a few seconds
-              (progn
-                (run-at-time
-                 "1 sec" nil 'delete-window
-                 (get-buffer-window buf t))
-                (message "No Compilation Errors yay!")))))
+;; setq compilation-finish-function changed to add-hook 'compilation-finish-functions so we can have multiple
+  (add-hook 'compilation-finish-functions
+            (lambda (buf str)
+              (message "my function")
+              (if (null (string-match ".*exited abnormally.*" str))
+                  ;;no errors, make the compilation window go away in a few seconds
+                  (progn
+                    (message "it is normal exit")
+                    (run-at-time
+                     "1 sec" nil 'delete-window
+                     (get-buffer-window buf t))
+                    (message "No Compilation Errors yay!")))))
 ;;  (add-hook 'compilation-mode-hook
 ;;            (lambda ()
 ;;              "Make sure that the compile window is splitting vertically."
