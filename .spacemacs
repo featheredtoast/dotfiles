@@ -494,11 +494,9 @@ before packages are loaded."
 ;; setq compilation-finish-function changed to add-hook 'compilation-finish-functions so we can have multiple
   (add-hook 'compilation-finish-functions
             (lambda (buf str)
-              (message "my function")
               (if (null (string-match ".*exited abnormally.*" str))
                   ;;no errors, make the compilation window go away in a few seconds
                   (progn
-                    (message "it is normal exit")
                     (run-at-time
                      "1 sec" nil 'delete-window
                      (get-buffer-window buf t))
