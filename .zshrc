@@ -61,10 +61,6 @@ WORDCHARS=''
 [ -f ~/.zsh_prompt ] && source ~/.zsh_prompt
 # store aliases elsewhere
 [ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
-#store path
-[ -f ~/.zsh_path ] && source ~/.zsh_path
-#store ssh
-[ -f ~/.zsh_agents ] && source ~/.zsh_agents
 #ghar completion
 autoload -Uz bashcompinit
 bashcompinit
