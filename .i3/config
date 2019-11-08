@@ -155,3 +155,6 @@ bindsym $mod+Shift+Return exec "i3lock -c 000000"
 #Move the current workspace to the next output
 # (effectively toggles when you only have two outputs)
 bindsym $mod+x move workspace to output right
+
+# Run vmware scripts if they exist. makes copy+paste work here
+exec which vmware-user-suid-wrapper && vmware-user-suid-wrapper
