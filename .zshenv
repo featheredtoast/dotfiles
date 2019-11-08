@@ -4,7 +4,7 @@ typeset -U path
 which -s brew>/dev/null && path=( $(brew --prefix coreutils)/libexec/gnubin $path)
 
 # Linuxbrew
-eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+[ -f /home/linuxbrew/.linuxbrew/bin/brew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 # add ~/bin, ~/ghar/bin to path
 path=( ~/bin ~/ghar/bin /usr/local/bin $path)
