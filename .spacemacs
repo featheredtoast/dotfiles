@@ -498,7 +498,7 @@ before packages are loaded."
                   ;;no errors, make the compilation window go away in a few seconds
                   (progn
                     (run-at-time
-                     "1 sec" nil 'delete-window
+                     "0.1 sec" nil 'delete-window
                      (get-buffer-window buf t))
                     (message "No Compilation Errors yay!")))))
 ;;  (add-hook 'compilation-mode-hook
