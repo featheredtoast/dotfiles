@@ -513,6 +513,7 @@ before packages are loaded."
   (add-to-list 'auto-mode-alist '("\\.js.es6\\'" . javascript-mode))
   (setq projectile-switch-project-action 'projectile-vc)
   (atomic-chrome-start-server)
+  (spacemacs/set-leader-keys (kbd "g$") 'magit-blob-visit-file)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
