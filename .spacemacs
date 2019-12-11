@@ -77,7 +77,7 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(exec-path-from-shell prettier-js direnv atomic-chrome)
+   dotspacemacs-additional-packages '(exec-path-from-shell prettier-js direnv atomic-chrome yaml-imenu)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -514,6 +514,7 @@ before packages are loaded."
   (setq projectile-switch-project-action 'projectile-vc)
   (atomic-chrome-start-server)
   (spacemacs/set-leader-keys (kbd "g$") 'magit-blob-visit-file)
+  (yaml-imenu-enable)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
