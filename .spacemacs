@@ -484,12 +484,6 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (setq exec-path-from-shell-variables '("SSH_AGENT_PID" "SSH_AUTH_SOCK"))
   (exec-path-from-shell-initialize)
-
-  ;; dired-use-ls-dired needs to be nil on macos
-  ;; https://stackoverflow.com/questions/25125200/emacs-error-ls-does-not-support-dired
-  (when (string= system-type "darwin")
-    (setq dired-use-ls-dired nil))
-
   (sp-use-paredit-bindings)
   (add-hook 'clojure-mode-hook 'paredit-mode)
   (add-hook 'js-mode-hook 'prettier-js-mode)

@@ -72,9 +72,6 @@ setopt AUTO_PUSHD
 # display for xterm
 [ -z $DISPLAY ] && export DISPLAY=localhost:0.0
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
 # direnv - set up per-directory environments https://direnv.net/
 which -s direnv>/dev/null && eval "$(direnv hook zsh)"
 
