@@ -78,3 +78,6 @@ which -s direnv>/dev/null && eval "$(direnv hook zsh)"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s ~/.sdkman/bin/sdkman-init.sh ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+[[ -d ~/.asdf ]] && source ~/.asdf/asdf.sh
+[[ -d ~/.asdf ]] && source ~/.asdf/completions/asdf.bash
