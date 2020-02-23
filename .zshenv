@@ -13,7 +13,7 @@ manpath=( $manpath)
 [[ -d ~/.rbenv ]] && path=("$HOME/.rbenv/bin" $path) && eval "$(rbenv init - --no-rehash)"
 
 # ssh agent -- for shared home directory across hosts
-SSH_ENV=$HOME/.ssh/.environment.`hostname -s`
+SSH_ENV=$HOME/.ssh/.environment.$(hostname -s)
 function start_agent {
     ssh-agent | sed 's/^echo/#echo/' > ${SSH_ENV}
     chmod 600 ${SSH_ENV}

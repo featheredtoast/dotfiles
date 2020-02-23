@@ -81,3 +81,20 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 [[ -d ~/.asdf ]] && source ~/.asdf/asdf.sh
 [[ -d ~/.asdf ]] && source ~/.asdf/completions/asdf.bash
+
+# Add SSH keys automatically on shell only if they do not already exist
+function add_ssh_keys {
+    if [ -f ~/.zsh_ssh_keys ]; then
+        echo "adding ssh keys"
+        for x in ~/.ssh/*.pub; do
+            FINGERPRINT=$(ssh-keygen -lf ${x} | awk '{split($0,a," "); print a[2]}')
+            PRIVATE_KEY=$(echo ${x} | sed 's/.pub$//g')
+            echo "ssh fingerprint ${FINGERPRINT}"
+            if ! ssh-add -l | grep $FINGERPRINT > /dev/null; then
+                echo "adding ${PRIVATE_KEY}"
+                ssh-add ${PRIVATE_KEY}
+            fi
+        done
+    fi
+}
+add_ssh_keys;
