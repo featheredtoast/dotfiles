@@ -79,7 +79,6 @@ which -s direnv>/dev/null && eval "$(direnv hook zsh)"
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s ~/.sdkman/bin/sdkman-init.sh ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-[[ -d ~/.asdf ]] && source ~/.asdf/asdf.sh
 [[ -d ~/.asdf ]] && source ~/.asdf/completions/asdf.bash
 
 # Add SSH keys automatically on shell only if they do not already exist

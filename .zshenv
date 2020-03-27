@@ -12,6 +12,8 @@ manpath=( $manpath)
 
 [[ -d ~/.rbenv ]] && path=("$HOME/.rbenv/bin" $path) && eval "$(rbenv init - --no-rehash)"
 
+[[ -d ~/.asdf ]] && source ~/.asdf/asdf.sh
+
 # ssh agent -- for shared home directory across hosts
 SSH_ENV=$HOME/.ssh/.environment.$(hostname -s)
 function start_agent {
@@ -29,3 +31,5 @@ if [ -f "${SSH_ENV}" ]; then
 else
     start_agent;
 fi
+
+export GPG_TTY=$(tty)
