@@ -10,7 +10,12 @@ which -s brew>/dev/null && path=( $(brew --prefix coreutils)/libexec/gnubin $pat
 path=( ~/bin ~/ghar/bin /usr/local/bin ~/.local/bin $path)
 manpath=( $manpath)
 
-[[ -d ~/.rbenv ]] && path=("$HOME/.rbenv/bin" $path) && eval "$(rbenv init - --no-rehash)"
+# Old rbenv
+# [[ -d ~/.rbenv ]] && path=("$HOME/.rbenv/bin" $path) && eval "$(rbenv init - --no-rehash)"
+
+# chruby
+[ -f /usr/local/share/chruby/chruby.sh ] && source /usr/local/share/chruby/chruby.sh && source /usr/local/share/chruby/auto.sh
+RUBIES+=(~/.rbenv/versions/*)
 
 [[ -d ~/.asdf ]] && source ~/.asdf/asdf.sh
 
