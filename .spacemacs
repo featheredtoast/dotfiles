@@ -516,6 +516,7 @@ before packages are loaded."
   (atomic-chrome-start-server)
   (spacemacs/set-leader-keys (kbd "g$") 'magit-blob-visit-file)
   (yaml-imenu-enable)
+  (chruby-use-corresponding)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
