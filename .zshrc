@@ -81,6 +81,8 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 [[ -d ~/.asdf ]] && source ~/.asdf/completions/asdf.bash
 
+[ -d /usr/local/Homebrew ] && export ASDF_DIR=$(brew --prefix asdf)
+
 # Add SSH keys automatically on shell only if they do not already exist
 function add_ssh_keys {
     for x in ~/.ssh/*.pub; do
