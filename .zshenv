@@ -18,8 +18,9 @@ manpath=( $manpath)
 RUBIES+=(~/.rbenv/versions/*)
 
 [ -d /usr/local/Homebrew ] && export ASDF_DIR=$(brew --prefix asdf)
+[ -d /usr/local/Homebrew ] && source $ASDF_DIR/asdf.sh
 
-[[ -d ~/.asdf ]] && source ~/.asdf/asdf.sh
+[[ -f ~/.asdf/asdf.sh ]] && source ~/.asdf/asdf.sh
 
 # ssh agent -- for shared home directory across hosts
 SSH_ENV=$HOME/.ssh/.environment.$(hostname -s)
