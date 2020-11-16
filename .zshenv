@@ -17,6 +17,8 @@ manpath=( $manpath)
 [ -f /usr/local/share/chruby/chruby.sh ] && source /usr/local/share/chruby/chruby.sh && source /usr/local/share/chruby/auto.sh
 RUBIES+=(~/.rbenv/versions/*)
 
+[ -d /usr/local/Homebrew ] && export ASDF_DIR=$(brew --prefix asdf)
+
 [[ -d ~/.asdf ]] && source ~/.asdf/asdf.sh
 
 # ssh agent -- for shared home directory across hosts
