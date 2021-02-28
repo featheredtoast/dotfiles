@@ -75,11 +75,7 @@ setopt AUTO_PUSHD
 # direnv - set up per-directory environments https://direnv.net/
 which -s direnv>/dev/null && eval "$(direnv hook zsh)"
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s ~/.sdkman/bin/sdkman-init.sh ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-[[ -d ~/.asdf ]] && source ~/.asdf/completions/asdf.bash
+[[ -d ~/.asdf/completions ]] && source ~/.asdf/completions/asdf.bash
 
 # Add SSH keys automatically on shell only if they do not already exist
 function add_ssh_keys {
