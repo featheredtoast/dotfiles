@@ -24,3 +24,5 @@
     local = true
 [branch]
 	autosetuprebase = always
+[init]
+  defaultBranch = main
