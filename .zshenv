@@ -13,6 +13,9 @@ manpath=( $manpath)
 # Old rbenv
 # [[ -d ~/.rbenv ]] && path=("$HOME/.rbenv/bin" $path) && eval "$(rbenv init - --no-rehash)"
 
+# npm binaries
+[[ -d ~/.asdf/installs/nodejs/15.4.0/.npm/bin ]] && path=("$HOME/.asdf/installs/nodejs/15.4.0/.npm/bin" $path)
+
 # chruby
 [ -f /usr/local/share/chruby/chruby.sh ] && source /usr/local/share/chruby/chruby.sh && source /usr/local/share/chruby/auto.sh
 RUBIES+=(~/.rbenv/versions/*)
