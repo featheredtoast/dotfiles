@@ -6,8 +6,8 @@ which -s brew>/dev/null && path=( $(brew --prefix coreutils)/libexec/gnubin $pat
 # Linuxbrew
 [ -f /home/linuxbrew/.linuxbrew/bin/brew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
-# add ~/bin, ~/ghar/bin to path
-path=( ~/bin ~/ghar/bin /usr/local/bin ~/.local/bin $path)
+# add ~/bin, ~/ghar/bin and golang's bin path to path
+path=( ~/bin ~/ghar/bin /usr/local/bin ~/.local/bin ~/go/bin $path)
 manpath=( $manpath)
 
 # Old rbenv

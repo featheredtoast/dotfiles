@@ -34,7 +34,8 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(csv
+   '(systemd
+     csv
      lua
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
@@ -54,7 +55,6 @@ This function should only modify configuration layer settings."
      multiple-cursors
      nginx
      org
-     php
      puppet
      python
      ruby
@@ -220,7 +220,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font or prioritized list of fonts.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 12.0
+                               :size 15.0
                                :weight normal
                                :width normal)
 
@@ -513,6 +513,7 @@ before packages are loaded."
   (global-set-key (kbd "C-+") 'er/contract-region)
   (add-to-list 'auto-mode-alist '("\\.js.es6\\'" . javascript-mode))
   (setq projectile-switch-project-action 'projectile-vc)
+  (setq projectile-indexing-method 'alien)
   (atomic-chrome-start-server)
   (spacemacs/set-leader-keys (kbd "g$") 'magit-blob-visit-file)
   (yaml-imenu-enable)
@@ -547,15 +548,15 @@ This function is called at the very end of Spacemacs initialization."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(css-indent-offset 2)
+ '(evil-want-Y-yank-to-eol nil)
  '(js-indent-level 2)
+ '(package-selected-packages
+   '(cider systemd yasnippet-snippets yapfify yaml-imenu ws-butler writeroom-mode winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package unfill undo-tree treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil toc-org tagedit symon symbol-overlay string-inflection sql-indent sphinx-doc spaceline-all-the-icons smeargle slim-mode seeing-is-believing scss-mode sass-mode rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe restart-emacs rbenv rake rainbow-delimiters pytest pyenv-mode py-isort puppet-mode pug-mode prettier-js popwin pippel pipenv pip-requirements phpunit php-extras password-generator paradox overseer orgit org-superstar org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-cliplink org-brain open-junk-file nodejs-repl nginx-mode nameless mwim move-text mmm-mode minitest markdown-toc magit-svn magit-section magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode link-hint json-navigator json-mode js2-refactor js-doc indent-guide importmagic impatient-mode hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-org helm-mode-manager helm-make helm-ls-git helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-cider helm-c-yasnippet helm-ag google-translate golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ gh-md geben fuzzy forge font-lock+ flyspell-correct-helm flycheck-pos-tip flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-easymotion evil-cleverparens evil-args evil-anzu emr emmet-mode elisp-slime-nav editorconfig dumb-jump drupal-mode dotenv-mode direnv dired-quick-sort diminish devdocs define-word cython-mode csv-mode company-web company-terraform company-phpactor company-php company-lua company-go company-anaconda column-enforce-mode clojure-snippets clean-aindent-mode cider-eval-sexp-fu chruby centered-cursor-mode bundler browse-at-remote blacken auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile atomic-chrome aggressive-indent ace-link ace-jump-helm-line ac-ispell))
  '(puppet-indent-tabs-mode t)
  '(safe-local-variable-values
-   (quote
-    ((cider-ns-refresh-after-fn . "reloaded.repl/resume")
-     (cider-ns-refresh-before-fn . "reloaded.repl/suspend")
-     (cider-cljs-lein-repl . "(do (user/go) (user/cljs-repl))")
+   '((cider-cljs-lein-repl . "(do (user/go) (user/cljs-repl))")
      (cider-refresh-after-fn . "reloaded.repl/resume")
-     (cider-refresh-before-fn . "reloaded.repl/suspend"))))
+     (cider-refresh-before-fn . "reloaded.repl/suspend")))
  '(standard-indent 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
