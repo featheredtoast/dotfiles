@@ -622,6 +622,9 @@ before packages are loaded."
   (spacemacs/set-leader-keys (kbd "g$") 'magit-blob-visit-file)
   (yaml-imenu-enable)
   (chruby-use-corresponding)
+
+  ;; git rebase workaround - see https://github.com/syl20bnr/spacemacs/issues/15089
+  (setq auto-mode-alist (delete '("/git-rebase-todo$" . helm-ls-git-rebase-todo-mode) auto-mode-alist))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
