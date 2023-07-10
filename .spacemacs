@@ -6,7 +6,7 @@
   "Layer configuration:
 This function should only modify configuration layer settings."
   ;;'((ruby :variables ruby-enable-enh-ruby-mode t))
-  '((ruby :variables ruby-version-manager 'chruby))
+  ;;'((ruby :variables ruby-version-manager 'chruby))
   (setq-default
    ;; Base distribution to use. This is a layer contained in the directory
    ;; `+distribution'. For now available distributions are `spacemacs-base'
@@ -621,7 +621,7 @@ before packages are loaded."
   (atomic-chrome-start-server)
   (spacemacs/set-leader-keys (kbd "g$") 'magit-blob-visit-file)
   (yaml-imenu-enable)
-  (chruby-use-corresponding)
+  ;;(chruby-use-corresponding)
 
   ;; git rebase workaround - see https://github.com/syl20bnr/spacemacs/issues/15089
   (setq auto-mode-alist (delete '("/git-rebase-todo$" . helm-ls-git-rebase-todo-mode) auto-mode-alist))

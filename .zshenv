@@ -3,6 +3,11 @@ typeset -U path
 # Hack to configure homebrew path's coreutils
 which -s brew>/dev/null && path=( $(brew --prefix coreutils)/libexec/gnubin $path)
 
+# Homebrew arm mac
+[ -f /opt/homebrew/bin/brew ] && export PATH="/opt/homebrew/bin:$PATH"
+[ -f /opt/homebrew/bin/brew ] && export PATH="/opt/homebrew/sbin:$PATH"
+[ -f /opt/homebrew/bin/brew ] && source /opt/homebrew/opt/asdf/libexec/asdf.sh
+
 # Linuxbrew
 [ -f /home/linuxbrew/.linuxbrew/bin/brew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
@@ -17,8 +22,8 @@ manpath=( $manpath)
 [[ -d ~/.asdf/installs/nodejs/15.4.0/.npm/bin ]] && path=("$HOME/.asdf/installs/nodejs/15.4.0/.npm/bin" $path)
 
 # chruby
-[ -f /usr/local/share/chruby/chruby.sh ] && source /usr/local/share/chruby/chruby.sh && source /usr/local/share/chruby/auto.sh
-RUBIES+=(~/.rbenv/versions/*)
+#[ -f /usr/local/share/chruby/chruby.sh ] && source /usr/local/share/chruby/chruby.sh && source /usr/local/share/chruby/auto.sh
+#RUBIES+=(~/.rbenv/versions/*)
 
 # go bin path
 export GOBIN=$HOME/bin
