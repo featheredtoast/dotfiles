@@ -1,7 +1,7 @@
 typeset -U path
 
 # Hack to configure homebrew path's coreutils
-which -s brew>/dev/null && path=( $(brew --prefix coreutils)/libexec/gnubin $path)
+which -s brew>/dev/null && path=( $(brew --prefix coreutils)/libexec/gnubin $path) && path=($(brew --prefix gnu-tar)/libexec/gnubin $path)
 
 # Homebrew arm mac
 [ -f /opt/homebrew/bin/brew ] && export PATH="/opt/homebrew/bin:$PATH"
