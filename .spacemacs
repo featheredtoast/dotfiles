@@ -51,7 +51,7 @@ This function should only modify configuration layer settings."
      clojure
      emacs-lisp
      git
-     go
+     (go :variables go-use-golangci-lint t)
      helm
      html
      javascript
@@ -70,6 +70,7 @@ This function should only modify configuration layer settings."
      version-control
      yaml
      graphviz
+     docker
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
@@ -109,29 +110,6 @@ It should only modify the values of Spacemacs settings."
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
   (setq-default
-   ;; If non-nil then enable support for the portable dumper. You'll need to
-   ;; compile Emacs 27 from source following the instructions in file
-   ;; EXPERIMENTAL.org at to root of the git repository.
-   ;;
-   ;; WARNING: pdumper does not work with Native Compilation, so it's disabled
-   ;; regardless of the following setting when native compilation is in effect.
-   ;;
-   ;; (default nil)
-   dotspacemacs-enable-emacs-pdumper nil
-
-   ;; Name of executable file pointing to emacs 27+. This executable must be
-   ;; in your PATH.
-   ;; (default "emacs")
-   dotspacemacs-emacs-pdumper-executable-file "emacs"
-
-   ;; Name of the Spacemacs dump file. This is the file will be created by the
-   ;; portable dumper in the cache directory under dumps sub-directory.
-   ;; To load it when starting Emacs add the parameter `--dump-file'
-   ;; when invoking Emacs 27.1 executable on the command line, for instance:
-   ;;   ./emacs --dump-file=$HOME/.emacs.d/.cache/dumps/spacemacs-27.1.pdmp
-   ;; (default (format "spacemacs-%s.pdmp" emacs-version))
-   dotspacemacs-emacs-dumper-dump-file (format "spacemacs-%s.pdmp" emacs-version)
-
    ;; Maximum allowed time in seconds to contact an ELPA repository.
    ;; (default 5)
    dotspacemacs-elpa-timeout 5
@@ -222,7 +200,7 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-startup-buffer-multi-digit-delay 0.4
 
    ;; If non-nil, show file icons for entries and headings on Spacemacs home buffer.
-   ;; This has no effect in terminal or if "all-the-icons" package or the font
+   ;; This has no effect in terminal or if "nerd-icons" package or the font
    ;; is not installed. (default nil)
    dotspacemacs-startup-buffer-show-icons nil
 
@@ -248,7 +226,10 @@ It should only modify the values of Spacemacs settings."
 
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
-   ;; with 2 themes variants, one dark and one light)
+   ;; with 2 themes variants, one dark and one light). A theme from external
+   ;; package can be defined with `:package', or a theme can be defined with
+   ;; `:location' to download the theme package, refer the themes section in
+   ;; DOCUMENTATION.org for the full theme specifications.
    dotspacemacs-themes '(spacemacs-dark
                          spacemacs-light)
 
@@ -275,6 +256,9 @@ It should only modify the values of Spacemacs settings."
                                :weight normal
                                :width normal)
 
+   ;; Default icons font, it can be `all-the-icons' or `nerd-icons'.
+   dotspacemacs-default-icons-font 'all-the-icons
+
    ;; The leader key (default "SPC")
    dotspacemacs-leader-key "SPC"
 
@@ -294,10 +278,10 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-major-mode-leader-key ","
 
    ;; Major mode leader key accessible in `emacs state' and `insert state'.
-   ;; (default "C-M-m" for terminal mode, "<M-return>" for GUI mode).
+   ;; (default "C-M-m" for terminal mode, "M-<return>" for GUI mode).
    ;; Thus M-RET should work as leader key in both GUI and terminal modes.
    ;; C-M-m also should work in terminal mode, but not in GUI mode.
-   dotspacemacs-major-mode-emacs-leader-key (if window-system "<M-return>" "C-M-m")
+   dotspacemacs-major-mode-emacs-leader-key (if window-system "M-<return>" "C-M-m")
 
    ;; These variables control whether separate commands are bound in the GUI to
    ;; the key pairs `C-i', `TAB' and `C-m', `RET'.
@@ -369,8 +353,14 @@ It should only modify the values of Spacemacs settings."
 
    ;; If nil, no load-hints enabled. If t, enable the `load-hints' which will
    ;; put the most likely path on the top of `load-path' to reduce walking
-   ;; through the whole `load-path'.
-   dotspacemacs-enable-load-hints t
+   ;; through the whole `load-path'. It's an experimental feature to speedup
+   ;; Spacemacs on Windows. Refer the FAQ.org "load-hints" session for details.
+   dotspacemacs-enable-load-hints nil
+
+   ;; If t, enable the `package-quickstart' feature to avoid full package
+   ;; loading, otherwise no `package-quickstart' attemption (default nil).
+   ;; Refer the FAQ.org "package-quickstart" section for details.
+   dotspacemacs-enable-package-quickstart nil
 
    ;; If non-nil a progress bar is displayed when spacemacs is loading. This
    ;; may increase the boot time on some systems and emacs builds, set it to
@@ -591,15 +581,6 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   )
 
-
-(defun dotspacemacs/user-load ()
-  "Library to load while dumping.
-This function is called only while dumping Spacemacs configuration. You can
-`require' or `load' the libraries of your choice that will be included in the
-dump."
-  )
-
-
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
 This function is called at the very end of Spacemacs startup, after layer
@@ -698,12 +679,67 @@ This function is called at the very end of Spacemacs initialization."
    '(evil-want-Y-yank-to-eol nil)
    '(go-tab-width 2)
    '(js-indent-level 2)
+   '(sh-basic-offset 2)
    '(package-selected-packages
-     '(ac-php-core xcscope counsel-gtags counsel swiper ivy dap-mode lsp-docker lsp-treemacs bui lsp-mode ggtags php-mode phpactor composer php-runtime adoc-mode restclient-helm ob-restclient ob-http company-restclient restclient know-your-http-well quelpa tide typescript-mode import-js grizzl add-node-modules-path origami yasnippet-snippets yapfify yaml-imenu ws-butler writeroom-mode winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package unfill treemacs-projectile treemacs-persp treemacs-magit treemacs-evil toc-org tagedit symon symbol-overlay string-inflection sql-indent spaceline-all-the-icons smeargle slim-mode seeing-is-believing scss-mode sass-mode rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe restart-emacs rbenv rake rainbow-delimiters pytest pyenv-mode py-isort puppet-mode pug-mode prettier-js popwin pippel pipenv pip-requirements phpunit phpcbf php-extras php-auto-yasnippets password-generator paradox overseer orgit org-projectile org-present org-pomodoro org-mime org-download org-cliplink org-bullets open-junk-file nodejs-repl nginx-mode nameless mwim move-text mmm-mode minitest markdown-toc magit-svn magit-section magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode link-hint json-navigator json-mode js2-refactor js-doc indent-guide importmagic impatient-mode hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-org helm-mode-manager helm-make helm-ls-git helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ gh-md geben fuzzy font-lock+ flyspell-correct-helm flycheck-pos-tip flycheck-package flycheck-elsa flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu emmet-mode elisp-slime-nav editorconfig dumb-jump drupal-mode dotenv-mode direnv diminish devdocs define-word cython-mode csv-mode company-web company-terraform company-tern company-phpactor company-php company-lua company-go company-anaconda column-enforce-mode clojure-snippets clean-aindent-mode cider-eval-sexp-fu cider chruby centered-cursor-mode bundler browse-at-remote blacken auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile atomic-chrome aggressive-indent ace-link ace-jump-helm-line ac-ispell))
+     '(ac-php-core xcscope counsel-gtags counsel swiper ivy dap-mode lsp-docker
+                   lsp-treemacs bui lsp-mode ggtags php-mode phpactor composer
+                   php-runtime adoc-mode restclient-helm ob-restclient ob-http
+                   company-restclient restclient know-your-http-well quelpa tide
+                   typescript-mode import-js grizzl add-node-modules-path origami
+                   yasnippet-snippets yapfify yaml-imenu ws-butler writeroom-mode
+                   winum which-key web-mode web-beautify volatile-highlights
+                   vi-tilde-fringe uuidgen use-package unfill treemacs-projectile
+                   treemacs-persp treemacs-magit treemacs-evil toc-org tagedit
+                   symon symbol-overlay string-inflection sql-indent
+                   spaceline-all-the-icons smeargle slim-mode seeing-is-believing
+                   scss-mode sass-mode rvm ruby-tools ruby-test-mode ruby-refactor
+                   ruby-hash-syntax rubocopfmt rubocop rspec-mode robe
+                   restart-emacs rbenv rake rainbow-delimiters pytest pyenv-mode
+                   py-isort puppet-mode pug-mode prettier-js popwin pippel pipenv
+                   pip-requirements phpunit phpcbf php-extras php-auto-yasnippets
+                   password-generator paradox overseer orgit org-projectile
+                   org-present org-pomodoro org-mime org-download org-cliplink
+                   org-bullets open-junk-file nodejs-repl nginx-mode nameless mwim
+                   move-text mmm-mode minitest markdown-toc magit-svn
+                   magit-section magit-gitflow macrostep lorem-ipsum livid-mode
+                   live-py-mode link-hint json-navigator json-mode js2-refactor
+                   js-doc indent-guide importmagic impatient-mode hybrid-mode
+                   hungry-delete hl-todo highlight-parentheses highlight-numbers
+                   highlight-indentation helm-xref helm-themes helm-swoop
+                   helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-org
+                   helm-mode-manager helm-make helm-ls-git helm-gitignore
+                   helm-git-grep helm-flx helm-descbinds helm-css-scss
+                   helm-company helm-c-yasnippet helm-ag google-translate
+                   golden-ratio godoctor go-tag go-rename go-impl go-guru
+                   go-gen-test go-fill-struct go-eldoc gnuplot gitignore-templates
+                   gitconfig-mode gitattributes-mode git-timemachine git-messenger
+                   git-link git-gutter-fringe+ gh-md geben fuzzy font-lock+
+                   flyspell-correct-helm flycheck-pos-tip flycheck-package
+                   flycheck-elsa flx-ido fill-column-indicator fancy-battery
+                   eyebrowse expand-region exec-path-from-shell evil-visualstar
+                   evil-visual-mark-mode evil-unimpaired evil-tutor
+                   evil-textobj-line evil-surround evil-org evil-numbers
+                   evil-nerd-commenter evil-mc evil-matchit evil-magit
+                   evil-lisp-state evil-lion evil-indent-plus evil-iedit-state
+                   evil-goggles evil-exchange evil-escape evil-ediff
+                   evil-cleverparens evil-args evil-anzu emmet-mode
+                   elisp-slime-nav editorconfig dumb-jump drupal-mode dotenv-mode
+                   direnv diminish devdocs define-word cython-mode csv-mode
+                   company-web company-terraform company-tern company-phpactor
+                   company-php company-lua company-go company-anaconda
+                   column-enforce-mode clojure-snippets clean-aindent-mode
+                   cider-eval-sexp-fu cider chruby centered-cursor-mode bundler
+                   browse-at-remote blacken auto-yasnippet auto-highlight-symbol
+                   auto-dictionary auto-compile atomic-chrome aggressive-indent
+                   ace-link ace-jump-helm-line ac-ispell))
    '(paradox-github-token t)
    '(puppet-indent-tabs-mode t)
    '(safe-local-variable-values
-     '((cider-cljs-lein-repl . "(do (user/go) (user/cljs-repl))")
+     '((encoding . utf-8) (checkdoc-allow-quoting-nil-and-t . t)
+       (js2-basic-offset . 2) (web-mode-indent-style . 2)
+       (web-mode-block-padding . 2) (web-mode-script-padding . 2)
+       (web-mode-style-padding . 2)
+       (cider-cljs-lein-repl . "(do (user/go) (user/cljs-repl))")
        (cider-refresh-after-fn . "reloaded.repl/resume")
        (cider-refresh-before-fn . "reloaded.repl/suspend")))
    '(standard-indent 2)
